@@ -1,0 +1,34 @@
+
+.navbar {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #9b5de5;
+    color: #fff;
+    /*position: sticky;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #9b5de5;
+    color: #fff;*/
+}
+
+.nav_links {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav_links li {
+    margin: 0 10px;
+}
+
+.nav_links li a {
+    text-decoration: none;
+}
+
