@@ -1,0 +1,41 @@
+
+.footer {
+    background-color: #000;
+    color: #fff;
+    padding: 50px 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer_columns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.column {
+    width: calc(33.33% - 20px);
+    margin-bottom: 30px;
+}
+
+.column h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.column ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.column ul li {
+    margin-bottom: 10px;
+}
+
+.column p {
+    margin: 0;
+}
