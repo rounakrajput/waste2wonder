@@ -6,11 +6,9 @@ import toast, { Toaster } from "react-hot-toast";
 4;
 import { useRouter } from "next/router";
 
-const Register = () => {
+const Login = () => {
   const router = useRouter();
   const [form, setForm] = useState({
-    fname: "",
-    lname: "",
     email: "",
     password: "",
   });
@@ -34,7 +32,7 @@ const Register = () => {
     e.preventDefault();
     console.log(form, "form");
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/register`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -42,19 +40,19 @@ const Register = () => {
       body: JSON.stringify(form),
     });
     const data = await res.json();
+    console.log(data, "data");
     if (!data?.success) {
       toast.error(data?.message);
     } else {
+      localStorage.setItem("token", data?.token);
       toast.success(data?.message);
     }
     setForm({
-      fname: "",
-      lname: "",
       email: "",
       password: "",
     });
     setTimeout(() => {
-      router.push("/login");
+      router.push("/");
     }, 3000);
   };
 
@@ -75,34 +73,8 @@ const Register = () => {
           />
         </Head>
         <section className={styles.container} id="signup">
-          <h1 className={styles.form_title}>Register Here</h1>
+          <h1 className={styles.form_title}>Login Here</h1>
           <form method="POST" className={styles.form} onSubmit={handleSubmit}>
-            <div className={styles.input_group}>
-              <i className="fas fa-user"></i>
-              <input
-                type="text"
-                name="fname"
-                id="fName"
-                placeholder="First Name"
-                onChange={handleChange}
-                value={form.fname}
-                required
-              />
-              <label htmlFor="fName">First Name</label>
-            </div>
-            <div className={styles.input_group}>
-              <i className="fas fa-user"></i>
-              <input
-                type="text"
-                name="lname"
-                id="lName"
-                placeholder="Last Name"
-                onChange={handleChange}
-                value={form.lname}
-                required
-              />
-              <label htmlFor="lName">Last Name</label>
-            </div>
             <div className={styles.input_group}>
               <i className="fas fa-envelope"></i>
               <input
@@ -132,8 +104,8 @@ const Register = () => {
             <input
               type="submit"
               className={styles.btn}
-              value="Sign Up"
-              name="signUp"
+              value="Login"
+              name="signin"
             />
           </form>
           <div className={styles.icons}>
@@ -141,9 +113,9 @@ const Register = () => {
             <i className="fab fa-facebook"></i>
           </div>
           <div className={styles.links}>
-            <p>Already have an account?</p>
+            <p>Don't have an account?</p>
             <a href="/login" id="signInButton">
-              Sign in
+              Register
             </a>
           </div>
         </section>
@@ -152,4 +124,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Login;

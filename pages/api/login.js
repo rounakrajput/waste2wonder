@@ -28,7 +28,7 @@ const handler = async (req, res) => {
 
     if (password === userExists?.password) {
         const token = JWT.sign({userExists},process.env.JWT_SECRET)
-      return res.status(200).send({ success: true, userExists,token });
+      return res.status(200).send({ success: true, message:"Logged In successfully",token });
     }
     res.status(401).send({ success: false, message: "invalid Credentials" });
   } catch (error) {
