@@ -1,26 +1,44 @@
-import connectDB from '@/middleware/connectDB'; 
-import File from '@/Models/File'; 
+import connectDB from "@/middleware/connectDB";
+import File from "@/Models/File";
 
-// API route handler for base64 image upload
 const uploadHandler = async (req, res) => {
-  try {
-    const { description, location, img_background } = req.body;
+  if (req.method !== "POST") {
+    return res
+      .status(405)
+      .json({ success: false, message: "Method not allowed!" });
+  }
 
+  const { description, location, img_background } = req.body ?? {};
+
+  if (!description || !location || !img_background) {
+    return res
+      .status(403)
+      .json({ success: false, message: "Please fill up all details!" });
+  }
+
+  try {
     // Save file information to MongoDB
-    const file = new File({
-      filename: Date.now() + '.png', // You can set the filename dynamically here
+    const file = await File.create({
+      filename: generateFileName("png"),
       description,
       location,
-      base64Image: img_background, // Assuming img_background contains base64 encoded image data
+      base64Image: img_background,
     });
     
-    await file.save();
-
-    res.status(200).json({ message: 'File uploaded successfully' });
+    if (!file) {
+      throw new Error("Failed to save file");
+    }
+    
+    res.status(200).json({ success: true, message: "File uploaded successfully" });
   } catch (error) {
-    console.error('Error uploading file:', error);
-    res.status(500).json({ message: 'Failed to upload file' });
+    console.error("Error uploading file:", error);
+    res.status(500).json({ success: false, message: "Failed to upload file" });
   }
+};
+
+// Generate a unique filename
+const generateFileName = (extension) => {
+  return `${Date.now()}-${Math.floor(Math.random() * 10000)}.${extension}`;
 };
 
 export default connectDB(uploadHandler);

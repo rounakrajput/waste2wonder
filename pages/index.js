@@ -3,6 +3,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from "react-responsive-carousel";
 import Head from "next/head";
 import styles from "@/styles/Index.module.css"
+import CardComponent from "./CardComponent";
 
 const Index = () => {
   const slides = [
@@ -72,6 +73,10 @@ const Index = () => {
         <span className="text-2xl flex justify-center items-center bg-red-600 mx-10 rounded-3xl p-4">
           card will be added 
         </span>
+        <div className="mx-36">
+        <CardComponent/>  
+        </div>
+
       </section>
     </>
   );

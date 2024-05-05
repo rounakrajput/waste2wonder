@@ -29,7 +29,16 @@ const Dashboard = () => {
   };
 
   const handleFileChange = (e) => {
-    setImgFile(e.target.files[0]);
+    const file = e.target.files[0];
+    setImgFile(file);
+
+    // Preview image
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      // Set the preview image src
+      document.getElementById("imagePreview").src = e.target.result;
+    };
+    reader.readAsDataURL(file);
   };
 
   const convertToBase64 = async (file, callback) => {
@@ -51,29 +60,29 @@ const Dashboard = () => {
       const formData = new FormData();
       formData.append("description", description);
       formData.append("location", coordinate);
-
+    
       // Convert uploaded image to base64
       if (imgFile) {
         await convertToBase64(imgFile, async (base64String) => {
-          // console.log(base64String);
+          setImgFile(base64String);
           formData.append("img_background", base64String);
-
+    
           console.log("Uploading data");
           setDisableSubmit(true);
-
+          const data = {};
+          for (const [key, value] of formData.entries()) {
+              data[key] = value;
+          }
+          console.log(data)
           // Requesting backend
-          const response = await axios.post(
-            `/api/upload`,
-            formData,
-            {
-              headers: {
-                "Content-Type": "multipart/form-data",
-              },
-            }
-          );
-
-          // console.log("Response:", response.data);
+          const response = await axios.post(`/api/upload`, data, {
+            headers: {
+              "Content-Type": `application/json`,
+            },
+          });
+    
           toast.success(response?.data.message);
+          setImgFile(null);
           // Optionally close the modal after successful submission
           toggleModal();
         });
@@ -82,8 +91,10 @@ const Dashboard = () => {
       }
     } catch (error) {
       setDisableSubmit(false);
+      toast.error(error.response?.data.message || "Error uploading file");
       console.error("Error uploading file:", error);
     }
+    
   };
 
   useEffect(() => {
@@ -189,6 +200,13 @@ const Dashboard = () => {
                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-slate-400 dark:border-gray-500 dark:text-white"
                       required
                     />
+                    <br />
+                    {/* Preview image */}
+                    {imgFile && <img
+                      id="imagePreview"
+                      alt="Preview"
+                      style={{ maxWidth: "100%", maxHeight: "200px" }}
+                    />}
                   </div>
                   <div>
                     <label
