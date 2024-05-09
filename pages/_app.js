@@ -4,8 +4,12 @@ import "@/styles/globals.css";
 import { useEffect, useState } from "react";
 import LoadingBar from "react-top-loading-bar";
 import { useRouter } from "next/router";
+import { SessionProvider } from "next-auth/react";
 
-export default function App({ Component, pageProps }) {
+export default function App({
+  Component,
+  pageProps: { session, ...pageProps },
+}) {
   const router = useRouter();
   const [progress, setProgress] = useState(0);
   useEffect(() => {
@@ -19,15 +23,17 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
-      <Navbar />
-      <LoadingBar
-        color="#f11946"
-        progress={progress}
-        waitingTime={600}
-        onLoaderFinished={() => setProgress(0)}
-      />
-      <Component {...pageProps} />;
-      <Footer />
+      <SessionProvider session={session}>
+        <Navbar />
+        <LoadingBar
+          color="#f11946"
+          progress={progress}
+          waitingTime={600}
+          onLoaderFinished={() => setProgress(0)}
+        />
+        <Component {...pageProps} />;
+        <Footer />
+      </SessionProvider>
     </>
   );
 }

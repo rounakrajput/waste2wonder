@@ -3,8 +3,11 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import styles from "@/styles/Register.module.css";
 import toast, { Toaster } from "react-hot-toast";
+import { FaFacebook, FaGithub, FaInstagram } from "react-icons/fa";
 4;
 import { useRouter } from "next/router";
+import Link from "next/link";
+import { signIn } from "next-auth/react";
 
 const Login = () => {
   const router = useRouter();
@@ -13,12 +16,12 @@ const Login = () => {
     password: "",
   });
 
-  useEffect(() => {
-    const userExists = localStorage.getItem("token");
-    if (userExists) {
-      router.push("/");
-    }
-  }, []);
+  // useEffect(() => {
+  //   const userExists = localStorage.getItem("token");
+  //   if (userExists) {
+  //     router.push("/");
+  //   }
+  // }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -109,14 +112,18 @@ const Login = () => {
             />
           </form>
           <div className={styles.icons}>
-            <i className="fab fa-google"></i>
-            <i className="fab fa-facebook"></i>
+            <FaFacebook color="blue" size={30} />
+            <FaInstagram color="hotpink" size={30} />
+            <FaGithub
+              size={30}
+              onClick={signIn("github", { callbackUrl: "/", redirect: true })}
+            />
           </div>
           <div className={styles.links}>
             <p>Don't have an account?</p>
-            <a href="/login" id="signInButton">
+            <Link href="/register" id="signInButton">
               Register
-            </a>
+            </Link>
           </div>
         </section>
       </main>
@@ -125,3 +132,7 @@ const Login = () => {
 };
 
 export default Login;
+
+// export async function getServerSideProps(context) {
+//   const token = localStorage.getItem("token");
+// }

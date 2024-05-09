@@ -25,10 +25,7 @@ const Navbar = () => {
             <Link href="/about">About Us</Link>
           </li>
           <li>
-            <Link href="/contact">Account</Link>
-          </li>
-          <li>
-            <Link href="/register">Login</Link>
+            <Link href="/login">Login</Link>
           </li>
 
           <li>

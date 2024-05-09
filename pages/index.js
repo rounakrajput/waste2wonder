@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import Head from "next/head";
-import styles from "@/styles/Index.module.css"
+import styles from "@/styles/Index.module.css";
 import CardComponent from "./CardComponent";
+import { useSession } from "next-auth/react";
 
 const Index = () => {
+  const { data: session } = useSession();
+
   const slides = [
     "/images/planting1.jpg",
     "/images/planting2.jpg",
@@ -16,7 +19,11 @@ const Index = () => {
     <>
       <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="true"
+        />
         <link
           href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&family=Ubuntu+Sans+Mono:ital,wght@0,400..700;1,400..700&display=swap"
           rel="stylesheet"
@@ -72,12 +79,11 @@ const Index = () => {
       <section className="cards-section">
         {/* Cards will be dynamically added here */}
         <span className="text-2xl flex justify-center items-center bg-red-600 mx-10 rounded-3xl p-4">
-          card will be added 
+          card will be added
         </span>
         <div className="mx-36">
-        <CardComponent/>  
+          <CardComponent />
         </div>
-
       </section>
     </>
   );
