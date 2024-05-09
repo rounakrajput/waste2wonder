@@ -7,7 +7,7 @@ import { FaFacebook, FaGithub, FaInstagram } from "react-icons/fa";
 4;
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { signIn } from "next-auth/react";
+import { getSession, signIn } from "next-auth/react";
 
 const Login = () => {
   const router = useRouter();
@@ -34,29 +34,26 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(form, "form");
-
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_HOST}/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(form),
+    const status = signIn("credentials", {
+      email: form.email,
+      password: form.password,
+      callbackUrl: "/dashboard",
+      redirect: true,
     });
-    const data = await res.json();
-    console.log(data, "data");
-    if (!data?.success) {
-      toast.error(data?.message);
-    } else {
-      localStorage.setItem("token", data?.token);
-      toast.success(data?.message);
-    }
+    console.log(status, "status");
+    // if (!data?.success) {
+    //   toast.error(data?.message);
+    // } else {
+    //   localStorage.setItem("token", data?.token);
+    //   toast.success(data?.message);
+    // }
     setForm({
       email: "",
       password: "",
     });
-    setTimeout(() => {
-      router.push("/");
-    }, 3000);
+    // setTimeout(() => {
+    //   router.push("/");
+    // }, 3000);
   };
 
   return (
@@ -69,12 +66,6 @@ const Login = () => {
           containerClassName=""
           containerStyle={{}}
         />
-        <Head>
-          <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-          />
-        </Head>
         <section className={styles.container} id="signup">
           <h1 className={styles.form_title}>Login Here</h1>
           <form method="POST" className={styles.form} onSubmit={handleSubmit}>
@@ -114,10 +105,10 @@ const Login = () => {
           <div className={styles.icons}>
             <FaFacebook color="blue" size={30} />
             <FaInstagram color="hotpink" size={30} />
-            <FaGithub
+            {/* <FaGithub
               size={30}
               onClick={signIn("github", { callbackUrl: "/", redirect: true })}
-            />
+            /> */}
           </div>
           <div className={styles.links}>
             <p>Don't have an account?</p>
@@ -133,6 +124,18 @@ const Login = () => {
 
 export default Login;
 
-// export async function getServerSideProps(context) {
-//   const token = localStorage.getItem("token");
-// }
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+
+  if (session) {
+    return {
+      redirect: {
+        destination: "/dashboard",
+        permanent: false,
+      },
+    };
+  }
+  return {
+    props: {},
+  };
+}

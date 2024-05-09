@@ -51,5 +51,37 @@ export const authOptions = {
     }),
     // ...add more providers here
   ],
+  // pages: {
+  //   signIn: "/login",
+  //   signOut: "/",
+  //   error: "/login",
+  // },
+  session: {
+    maxAge: 30 * 24 * 60 * 60,
+    strategy: "jwt",
+    updateAge: 24 * 60 * 60,
+  },
+  jwt: {
+    secret: process.env.NEXT_PUBLIC_JWT_SECRET,
+  },
+  debug: true,
+
+  // callbacks: {
+  //   session: async ({ session, token }) => {
+  //     session.user = token;
+  //     return session;
+  //   },
+  //   jwt: async ({ user, token, account }) => {
+  //     if (user) {
+  //       token = Object.assign(token, {
+  //         uid: user.id,
+  //         provider: account.provider,
+  //         name: user.name,
+  //         email: user.email,
+  //       });
+  //     }
+  //     return token;
+  //   },
+  // },
 };
 export default NextAuth(authOptions);
