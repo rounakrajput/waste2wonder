@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import styles from "@/styles/Navbar.module.css";
 
 const Navbar = () => {
@@ -6,32 +7,32 @@ const Navbar = () => {
     <>
       <nav className={styles.navbar}>
         <div className="logo">
-          <a href="index.html">Logo</a>
+          <Link href="/">Logo</Link>
         </div>
         <ul className={styles.nav_links}>
           <li>
-            <a href="/">Home</a>
+            <Link href="/">Home</Link>
           </li>
           <li>
-            <a href="https://www.pmindia.gov.in/en/major_initiatives/swachh-bharat-abhiyan/">
+            <a href="https://www.pmindia.gov.in/en/major_initiatives/swachh-bharat-abhiyan/" referrerPolicy="no-referrer" target="_blank">
               Events
             </a>
           </li>
           <li>
-            <a href="/places">Places</a>
+            <Link href="/places">Places</Link>
           </li>
           <li>
-            <a href="/about">About Us</a>
+            <Link href="/about">About Us</Link>
           </li>
           <li>
-            <a href="/contact">Account</a>
+            <Link href="/contact">Account</Link>
           </li>
           <li>
-            <a href="/register">Login</a>
+            <Link href="/register">Login</Link>
           </li>
 
           <li>
-            <a href="/dashboard">Dashboard</a>
+            <Link href="/dashboard">Dashboard</Link>
           </li>
         </ul>
       </nav>

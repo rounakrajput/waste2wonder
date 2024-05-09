@@ -19,6 +19,7 @@
     "react-dom": "^18",
     "react-hot-toast": "^2.4.1",
     "react-responsive-carousel": "^3.2.23",
+    "react-top-loading-bar": "^2.3.1",
     "reactjs-nextjs-carousel": "^0.0.7"
   },
   "devDependencies": {
