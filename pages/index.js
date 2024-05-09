@@ -3,7 +3,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from "react-responsive-carousel";
 import Head from "next/head";
 import styles from "@/styles/Index.module.css";
-import CardComponent from "./CardComponent";
+import CardComponent from "../Components/CardComponent";
 import { useSession } from "next-auth/react";
 
 const Index = () => {
@@ -76,14 +76,12 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="cards-section">
+        <h5 className="mb-2 font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900 w-screen flex justify-center items-center">
+                PLACES
+              </h5>
+      <section className="container flex flex-row justify-center items-center my-10 gap-6">
         {/* Cards will be dynamically added here */}
-        <span className="text-2xl flex justify-center items-center bg-red-600 mx-10 rounded-3xl p-4">
-          card will be added
-        </span>
-        <div className="mx-36">
           <CardComponent />
-        </div>
       </section>
     </>
   );
