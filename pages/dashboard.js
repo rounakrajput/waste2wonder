@@ -2,13 +2,23 @@ import React, { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import Image from "next/image";
 import axios from "axios";
+import { getSession, useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 const Dashboard = () => {
+  const router = useRouter();
+  const { data: session } = useSession();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [imgFile, setImgFile] = useState(null);
   const [description, setDescription] = useState("");
   const [coordinate, setCoordinate] = useState(null);
   const [disableSubmit, setDisableSubmit] = useState(false);
+
+  useEffect(() => {
+    if (!session) {
+      router.push("/login");
+    }
+  }, [router.pathname]);
 
   const getLocation = () => {
     if (navigator.geolocation) {
@@ -60,27 +70,27 @@ const Dashboard = () => {
       const formData = new FormData();
       formData.append("description", description);
       formData.append("location", coordinate);
-    
+
       // Convert uploaded image to base64
       if (imgFile) {
         await convertToBase64(imgFile, async (base64String) => {
           setImgFile(base64String);
           formData.append("img_background", base64String);
-    
+
           console.log("Uploading data");
           setDisableSubmit(true);
           const data = {};
           for (const [key, value] of formData.entries()) {
-              data[key] = value;
+            data[key] = value;
           }
-          console.log(data)
+          console.log(data);
           // Requesting backend
           const response = await axios.post(`/api/upload`, data, {
             headers: {
               "Content-Type": `application/json`,
             },
           });
-    
+
           toast.success(response?.data.message);
           setImgFile(null);
           // Optionally close the modal after successful submission
@@ -94,7 +104,6 @@ const Dashboard = () => {
       toast.error(error.response?.data.message || "Error uploading file");
       console.error("Error uploading file:", error);
     }
-    
   };
 
   useEffect(() => {
@@ -202,11 +211,13 @@ const Dashboard = () => {
                     />
                     <br />
                     {/* Preview image */}
-                    {imgFile && <img
-                      id="imagePreview"
-                      alt="Preview"
-                      style={{ maxWidth: "100%", maxHeight: "200px" }}
-                    />}
+                    {imgFile && (
+                      <img
+                        id="imagePreview"
+                        alt="Preview"
+                        style={{ maxWidth: "100%", maxHeight: "200px" }}
+                      />
+                    )}
                   </div>
                   <div>
                     <label
@@ -282,7 +293,10 @@ const Dashboard = () => {
               </svg>
               <div className="mt-8 sm:ml-6 sm:mt-0 lg:ml-0 lg:mt-10">
                 <p className="text-lg text-gray-600">
-                "I'm amazed by the transformative power of waste2wonder! Seeing the before-and-after images truly highlights the impact we can make on our environment. Count me in for future cleanup events!"
+                  "I'm amazed by the transformative power of waste2wonder!
+                  Seeing the before-and-after images truly highlights the impact
+                  we can make on our environment. Count me in for future cleanup
+                  events!"
                 </p>
                 <cite className="mt-4 block font-semibold not-italic text-gray-900">
                   Shehab , England
@@ -304,7 +318,10 @@ const Dashboard = () => {
               </svg>
               <div className="mt-8 sm:ml-6 sm:mt-0 lg:ml-0 lg:mt-10">
                 <p className="text-lg text-gray-600">
-                "waste2wonder is a game-changer in environmental activism. The platform makes it easy for anyone to get involved in restoring our planet. I've already shared it with all my friends and family!"
+                  "waste2wonder is a game-changer in environmental activism. The
+                  platform makes it easy for anyone to get involved in restoring
+                  our planet. I've already shared it with all my friends and
+                  family!"
                 </p>
                 <cite className="mt-4 block font-semibold not-italic text-gray-900">
                   Najib, Malaysia
@@ -326,7 +343,9 @@ const Dashboard = () => {
               </svg>
               <div className="mt-8 sm:ml-6 sm:mt-0 lg:ml-0 lg:mt-10">
                 <p className="text-lg text-gray-600">
-                "The concept behind waste2wonder is inspiring, and the execution is flawless. I love how the platform brings people together for a common cause. Keep up the amazing work!"
+                  "The concept behind waste2wonder is inspiring, and the
+                  execution is flawless. I love how the platform brings people
+                  together for a common cause. Keep up the amazing work!"
                 </p>
                 <cite className="mt-4 block font-semibold not-italic text-gray-900">
                   Yousef, New York

@@ -5,6 +5,7 @@ import styles from "@/styles/Register.module.css";
 import toast, { Toaster } from "react-hot-toast";
 4;
 import { useRouter } from "next/router";
+import { getSession } from "next-auth/react";
 
 const Register = () => {
   const router = useRouter();
@@ -14,13 +15,6 @@ const Register = () => {
     email: "",
     password: "",
   });
-
-  useEffect(() => {
-    const userExists = localStorage.getItem("token");
-    if (userExists) {
-      router.push("/");
-    }
-  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -153,3 +147,19 @@ const Register = () => {
 };
 
 export default Register;
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+
+  if (session) {
+    return {
+      redirect: {
+        destination: "/dashboard",
+        permanent: false,
+      },
+    };
+  }
+  return {
+    props: {},
+  };
+}

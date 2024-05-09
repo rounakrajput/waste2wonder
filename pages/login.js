@@ -34,26 +34,25 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(form, "form");
-    const status = signIn("credentials", {
+    const status = await signIn("credentials", {
       email: form.email,
       password: form.password,
       callbackUrl: "/dashboard",
-      redirect: true,
+      redirect: false,
     });
     console.log(status, "status");
-    // if (!data?.success) {
-    //   toast.error(data?.message);
-    // } else {
-    //   localStorage.setItem("token", data?.token);
-    //   toast.success(data?.message);
-    // }
+    if (!status?.ok) {
+      toast.error("failed to log in!");
+    } else {
+      toast.success("logged in successfully!");
+      setTimeout(() => {
+        router.push("/");
+      }, 3000);
+    }
     setForm({
       email: "",
       password: "",
     });
-    // setTimeout(() => {
-    //   router.push("/");
-    // }, 3000);
   };
 
   return (
