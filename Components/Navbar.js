@@ -12,7 +12,7 @@ const Navbar = () => {
     <>
       <nav className={styles.navbar}>
         <div className="logo">
-          <Link href="/">Logo</Link>
+          <Link href="/" className="font-bold text-xl px-14">Waste2Wonder</Link>
         </div>
         <ul className={styles.nav_links}>
           <li>
