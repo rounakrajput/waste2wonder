@@ -282,8 +282,7 @@ const Dashboard = () => {
               </svg>
               <div className="mt-8 sm:ml-6 sm:mt-0 lg:ml-0 lg:mt-10">
                 <p className="text-lg text-gray-600">
-                  My order arrived super quickly. The product is even better
-                  than I hoped it would be. Very happy customer over here!
+                "I'm amazed by the transformative power of waste2wonder! Seeing the before-and-after images truly highlights the impact we can make on our environment. Count me in for future cleanup events!"
                 </p>
                 <cite className="mt-4 block font-semibold not-italic text-gray-900">
                   Shehab , England
@@ -305,8 +304,7 @@ const Dashboard = () => {
               </svg>
               <div className="mt-8 sm:ml-6 sm:mt-0 lg:ml-0 lg:mt-10">
                 <p className="text-lg text-gray-600">
-                  I had to return a purchase that didn’t fit. The whole process
-                  was so simple that I ended up ordering two new items!
+                "waste2wonder is a game-changer in environmental activism. The platform makes it easy for anyone to get involved in restoring our planet. I've already shared it with all my friends and family!"
                 </p>
                 <cite className="mt-4 block font-semibold not-italic text-gray-900">
                   Najib, Malaysia
@@ -328,9 +326,7 @@ const Dashboard = () => {
               </svg>
               <div className="mt-8 sm:ml-6 sm:mt-0 lg:ml-0 lg:mt-10">
                 <p className="text-lg text-gray-600">
-                  Now that I’m on holiday for the summer, I’ll probably order a
-                  few more shirts. It’s just so convenient, and I know the
-                  quality will always be there.
+                "The concept behind waste2wonder is inspiring, and the execution is flawless. I love how the platform brings people together for a common cause. Keep up the amazing work!"
                 </p>
                 <cite className="mt-4 block font-semibold not-italic text-gray-900">
                   Yousef, New York

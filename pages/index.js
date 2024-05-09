@@ -36,7 +36,8 @@ const Index = () => {
         autoPlay
         showStatus={false}
         showThumbs={false}
-        className="mx-36"
+        className=" w-[80%] mx-auto"
+        // className="mx-36"
       >
         <div>
           <img src={slides[0]} className="h-96" />
@@ -52,11 +53,11 @@ const Index = () => {
         </div>
       </Carousel>
 
-      <section className="event-section flex flex-row my-10 justify-between items-center gap-4 bg-purple-400 rounded-lg h-64 w-[81%] mx-32 overflow-hidden">
+      <section className="event-section flex flex-col md:flex-row my-10 justify-between items-center gap-1 bg-purple-400 rounded-lg h-64 w-[80%] mx-auto overflow-auto ">
         <img
           src="https://source.unsplash.com/400x300/?event"
           alt="Event Image"
-          className="event-image h-48 ml-8  "
+          className="event-image h-48 ml-8"
         />
         <div className={styles.event_text}>
           <p className="font-bold text-xl mx-4 text-justify">
