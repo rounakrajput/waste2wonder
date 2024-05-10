@@ -37,6 +37,11 @@ const Index = () => {
             style={{ maxWidth: "100%", height: "auto", overflow: "hidden" }}
           />
         </div>
+        <p className="mx-auto max-w-xl text-xl text-gray-600">
+            Let's write the story of India with the ink of sustainability, where
+            each chapter celebrates the triumphs of a green and clean nation,
+            preserving our heritage for generations to come.
+          </p>
       </main>
 
       <Carousel
@@ -68,7 +73,7 @@ const Index = () => {
         />
         <div className={styles.event_text}>
           <p className="font-semibold text-xl mx-4 text-justify">
-          The total quantity of Solid waste generated in the country is 160038.9 TPD of which 152749.5 TPD of waste is collected at a collection efficiency of 95.4%. Cities all over the country produce tons of waste that often goes to landfills, further polluting the environment. According to a CNN news report, India is home to over 3,100 landfills scattered throughout the country</p>
+          The total quantity of Solid waste generated in the country is 160038.9 TPD of which 152749.5 TPD of waste is collected at a collection efficiency of 95.4%. Cities all over the country produce tons of waste that often goes to landfills, further polluting the environment. According to a CNN news report, India is home to over 3,100 landfills scattered throughout the country.Every year India is filling the land with waste and pollutatnts covering 1580 acre of land.</p>
         </div>
       </section>
 

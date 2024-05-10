@@ -145,6 +145,8 @@ const Dashboard = () => {
             Let's write the story of India with the ink of sustainability, where
             each chapter celebrates the triumphs of a green and clean nation,
             preserving our heritage for generations to come.
+
+            About 90% of the staggering 150,000 metric ton of urban solid wastes generated everyday make their way to such locations
           </p>
           <button
             onClick={toggleModal}
@@ -299,7 +301,7 @@ const Dashboard = () => {
                   events!"
                 </p>
                 <cite className="mt-4 block font-semibold not-italic text-gray-900">
-                  Shehab , England
+                  Delhi , India
                 </cite>
               </div>
             </blockquote>
@@ -324,7 +326,7 @@ const Dashboard = () => {
                   family!"
                 </p>
                 <cite className="mt-4 block font-semibold not-italic text-gray-900">
-                  Najib, Malaysia
+                  Maharashtra, India
                 </cite>
               </div>
             </blockquote>
@@ -348,7 +350,7 @@ const Dashboard = () => {
                   together for a common cause. Keep up the amazing work!"
                 </p>
                 <cite className="mt-4 block font-semibold not-italic text-gray-900">
-                  Yousef, New York
+                  Chennai, India
                 </cite>
               </div>
             </blockquote>
