@@ -37,7 +37,7 @@ const Index = () => {
             style={{ maxWidth: "100%", height: "auto", overflow: "hidden" }}
           />
         </div>
-        <p className="mx-auto max-w-xl text-xl text-gray-600">
+        <p className="mx-auto my-10 max-w-[75%] text-2xl font-bold text-center text-gray-600">
             Let's write the story of India with the ink of sustainability, where
             each chapter celebrates the triumphs of a green and clean nation,
             preserving our heritage for generations to come.
