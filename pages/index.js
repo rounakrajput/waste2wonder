@@ -80,7 +80,7 @@ const Index = () => {
         <h5 className="mb-2 font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900 w-screen flex justify-center items-center">
                 PLACES
               </h5>
-      <section className="container flex flex-row justify-center items-center my-10 gap-6">
+      <section className="container flex flex-row justify-center items-center my-10 gap-6 flex-wrap">
         {/* Cards will be dynamically added here */}
           <CardComponent />
       </section>
