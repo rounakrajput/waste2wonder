@@ -80,6 +80,7 @@ const CardComponent = () => {
                 <Image
                 src={activeSrc}
                 fill="layout"
+                sizes="18%"
                 />
               </ModalBody>
             </ModalContent>

@@ -11,9 +11,9 @@ const Index = () => {
 
   const slides = [
     "https://images.fastcompany.com/image/upload/f_auto,q_auto,c_fit/fc/3062853-poster-p-1-these-maps-show-how-many-landfills-cover-the-us.jpg",
-    "/images/planting2.jpg",
-    "/images/planting3.jpg",
-    "/images/planting4.jpg",
+    "/images/landfill1.jpg",
+    "/images/landfill2.jpg",
+    "/images/landfill3.jpg",
   ];
   return (
     <>
@@ -72,8 +72,8 @@ const Index = () => {
           className="event-image h-48 ml-8"
         />
         <div className={styles.event_text}>
-          <p className="font-semibold text-xl mx-4 text-justify">
-          The total quantity of Solid waste generated in the country is 160038.9 TPD of which 152749.5 TPD of waste is collected at a collection efficiency of 95.4%. Cities all over the country produce tons of waste that often goes to landfills, further polluting the environment. According to a CNN news report, India is home to over 3,100 landfills scattered throughout the country.Every year India is filling the land with waste and pollutatnts covering 1580 acre of land.</p>
+          <p className="font-semibold text-m mx-4 text-justify">
+          The total quantity of Solid waste generated in the country is 160038.9 TPD .The planet loses 24 billion tonnes of topsoil each year because of land pollution. Cities all over the country produce tons of waste that often goes to landfills, further polluting the environment. According to a CNN news report, India is home to over 3,100 landfills scattered throughout the country.Every year India is filling the land with waste and pollutatnts covering 1580 acre of land.</p>
         </div>
       </section>
 

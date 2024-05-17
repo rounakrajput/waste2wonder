@@ -13,8 +13,9 @@ const Footer = () => {
                 <li>Rounak Kumar</li>
                 <li>Swati Suman</li>
                 <li>Niranjan Kumar</li>
-                <li>Emily Johnson</li>
-                <li>David Brown</li>
+                <li>Pawan Kumar</li>
+                <li>Abhinav Anand</li>
+                <li>Saurabh Kumar</li>
               </ul>
             </div>
             <div className={styles.column}>
