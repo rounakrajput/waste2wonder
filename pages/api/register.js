@@ -1,5 +1,5 @@
-import connectDB from "@/middleware/connectDB";
-import User from "@/Models/User";
+import connectDB from "../../middleware/connectDB";
+import User from "../../Models/User";
 
 const handler = async (req, res) => {
   if (req.method !== "POST") {

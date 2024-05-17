@@ -1,5 +1,5 @@
-import connectDB from "@/middleware/connectDB";
-import File from "@/Models/File";
+import connectDB from "../../middleware/connectDB";
+import File from "../../Models/File";
 
 const getAllCardsHandler = async (req, res) => {
     if (req.method !== 'GET') {
