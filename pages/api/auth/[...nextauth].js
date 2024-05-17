@@ -2,7 +2,7 @@ import NextAuth from "next-auth/next";
 import GithubProvider from "next-auth/providers/github";
 import Credentials from "next-auth/providers/credentials";
 import mongoose from "mongoose";
-import User from "@/Models/User";
+import User from "../../../Models/User";
 export const authOptions = {
   // Configure one or more authentication providers
   providers: [

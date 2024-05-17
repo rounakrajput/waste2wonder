@@ -1,7 +1,7 @@
 "use client";
 import Head from "next/head";
 import { useEffect, useState } from "react";
-import styles from "@/styles/Register.module.css";
+import styles from "../styles/Register.module.css";
 import toast, { Toaster } from "react-hot-toast";
 import { FaFacebook, FaGithub, FaInstagram } from "react-icons/fa";
 4;

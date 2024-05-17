@@ -1,5 +1,5 @@
-import connectDB from "@/middleware/connectDB";
-import User from "@/Models/User";
+import connectDB from "../../middleware/connectDB";
+import User from "../../Models/User";
 import JWT from "jsonwebtoken";
 
 const handler = async (req, res) => {

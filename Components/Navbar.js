@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Link from "next/link";
-import styles from "@/styles/Navbar.module.css";
+import styles from "../styles/Navbar.module.css";
 import { signOut, useSession } from "next-auth/react";
 
 const Navbar = () => {
